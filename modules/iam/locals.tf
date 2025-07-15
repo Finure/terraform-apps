@@ -1,7 +1,7 @@
 locals {
   apps_config = {
-    for file in fileset("${path.module}/../../applications", "*.yaml") :
-    trimsuffix(basename(file), ".yaml") => try(yamldecode(file("${path.module}/../../applications/${file}"))["iam"], {})
+    for filename in fileset("${path.module}/../../applications", "*.yaml") :
+    trimsuffix(basename(filename), ".yaml") => try(yamldecode(file("${path.module}/../../applications/${filename}"))["iam"], {})
     }
 
   service_accounts = flatten([
@@ -26,3 +26,4 @@ locals {
   ])
 
 }
+
