@@ -1,6 +1,6 @@
 iam:
   service_accounts:
-    - account_id: test-gcs1211
+    - account_id: test-gcs121
       display_name: Loki GCS Writer
       ns: test
       kubernetes_service_account: test
