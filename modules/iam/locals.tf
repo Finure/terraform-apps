@@ -2,7 +2,7 @@ locals {
   apps_config = {
     for file in fileset("${path.module}/../../applications", "*.yaml") :
     trimsuffix(basename(file), ".yaml") => try(yamldecode(file("${path.module}/../../applications/${file}"))["iam"], {})
-    }
+  }
 
   service_accounts = flatten([
     for app_name, app in local.apps_config :

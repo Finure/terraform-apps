@@ -1,3 +1,10 @@
+terraform {
+  backend "gcs" {
+    prefix       = "iam-apps"
+    bucket       = "finure-tfstate"
+  }
+}
+
 provider "google" {
   default_labels = {
     project     = "finure"
