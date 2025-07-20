@@ -7,7 +7,6 @@ terraform {
   }
   backend "gcs" {
     prefix       = "github"
-    use_lockfile = true
     bucket       = "finure-tfstate"
   }
 }
