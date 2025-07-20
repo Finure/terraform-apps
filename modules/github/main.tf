@@ -26,15 +26,6 @@ resource "github_branch_default" "default" {
   branch     = each.value.default_branch
 }
 
-resource "github_repository_collaborator" "collaborators" {
-  for_each = {
-    for name, details in local.repo_collaborators : name => details
-  }
-  repository = each.value.repo
-  permission = each.value.role
-  username   = each.value.user
-}
-
 // Use this after repo is public
 # resource "github_branch_protection" "branch_protections" {
 #   for_each = {

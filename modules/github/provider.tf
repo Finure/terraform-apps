@@ -6,8 +6,8 @@ terraform {
     }
   }
   backend "gcs" {
-    prefix       = "github"
-    bucket       = "finure-tfstate"
+    prefix = "github"
+    bucket = "finure-tfstate"
   }
 }
 

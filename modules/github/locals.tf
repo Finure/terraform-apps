@@ -20,16 +20,5 @@ locals {
       }
     ]
   ])
-
-  repo_collaborators = flatten([
-    for repo in local.repos : [
-      for collaborator in try(repo.collaborators, []) : {
-        user = collaborator.name
-        repo = repo.name
-        role = collaborator.role
-      }
-    ]
-  ])
-
 }
 
