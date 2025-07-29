@@ -1,5 +1,5 @@
-name: webapp
-description: Finure webapp
+name: app-seedjob
+description: Finure seedjob application
 has_issues: true
 has_projects: true
 has_wiki: false
