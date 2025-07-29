@@ -1,5 +1,5 @@
-name: app-bootstrap
-description: Finure app bootstrap
+name: webapp
+description: Finure webapp
 has_issues: true
 has_projects: true
 has_wiki: false
