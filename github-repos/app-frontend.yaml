@@ -1,5 +1,5 @@
-name: app-backend
-description: Finure backend application
+name: app-frontend
+description: Finure frontend application
 has_issues: true
 has_projects: true
 has_wiki: false
