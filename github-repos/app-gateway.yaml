@@ -1,0 +1,12 @@
+name: app-gateway
+description: Finure gateway application
+has_issues: true
+has_projects: true
+has_wiki: false
+allow_merge_commit: true
+branch_protection:
+  - pattern: main
+    required_reviews: 1
+    dismiss_stale_reviews: true
+    enforce_admins: false
+    require_code_owner_reviews: true
