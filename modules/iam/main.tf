@@ -1,7 +1,7 @@
 terraform {
   backend "gcs" {
-    prefix       = "iam-apps"
-    bucket       = "finure-tfstate"
+    prefix = "iam-apps"
+    bucket = "finure-tfstate"
   }
 }
 

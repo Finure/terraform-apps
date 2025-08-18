@@ -1,0 +1,22 @@
+iam:
+  service_accounts:
+    - account_id: airflow
+      display_name: Airflow SA
+      ns: airflow
+      kubernetes_service_account: airflow
+  storage_buckets:
+    - name: finure-airflow
+      service_account_id: airflow
+      role: roles/storage.objectAdmin
+
+
+buckets:
+  - name: "finure-airflow"
+    location: "US"
+    versioning_enabled: true
+    uniform_bucket_level_access: true
+    lifecycle_rules:
+      - condition:
+          age: 90
+        action: 
+          type: Delete
