@@ -1,7 +1,6 @@
 terraform {
   backend "gcs" {
     prefix       = "gcs"
-    use_lockfile = true
   }
 }
 
