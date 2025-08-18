@@ -1,6 +1,7 @@
 terraform {
   backend "gcs" {
     prefix       = "gcs"
+    bucket = "finure-tfstate"
   }
 }
 
