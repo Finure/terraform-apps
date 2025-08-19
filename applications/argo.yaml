@@ -1,0 +1,21 @@
+iam:
+  service_accounts:
+    - account_id: argo-workflows
+      display_name: Argo Workflows SA
+      ns: argo
+      kubernetes_service_account: argo-workflows
+  storage_buckets:
+    - name: finure-argo
+      service_account_id: argo-workflows
+      role: roles/storage.objectAdmin
+
+buckets:
+  - name: finure-argo
+    location: "US"
+    versioning_enabled: true
+    uniform_bucket_level_access: true
+    lifecycle_rules:
+      - condition:
+          age: 90
+        action: 
+          type: Delete
