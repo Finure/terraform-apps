@@ -11,9 +11,21 @@ iam:
     - name: finure-airflow
       service_account_id: argo-workflows
       role: roles/storage.objectAdmin
+    - name: finure-models
+      service_account_id: argo-workflows
+      role: roles/storage.objectAdmin
 
 buckets:
   - name: finure-argo
+    location: "US"
+    versioning_enabled: true
+    uniform_bucket_level_access: true
+    lifecycle_rules:
+      - condition:
+          age: 90
+        action: 
+          type: Delete
+  - name: finure-models
     location: "US"
     versioning_enabled: true
     uniform_bucket_level_access: true
