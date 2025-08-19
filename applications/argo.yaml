@@ -8,6 +8,9 @@ iam:
     - name: finure-argo
       service_account_id: argo-workflows
       role: roles/storage.objectAdmin
+    - name: finure-airflow
+      service_account_id: argo-workflows
+      role: roles/storage.objectAdmin
 
 buckets:
   - name: finure-argo
