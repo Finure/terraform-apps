@@ -11,7 +11,7 @@ iam:
 
 
 buckets:
-  - name: "finure-airflow"
+  - name: finure-airflow
     location: "US"
     versioning_enabled: true
     uniform_bucket_level_access: true
