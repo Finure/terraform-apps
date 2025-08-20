@@ -22,7 +22,7 @@ buckets:
     uniform_bucket_level_access: true
     lifecycle_rules:
       - condition:
-          age: 90
+          age: 30
         action: 
           type: Delete
   - name: finure-models
