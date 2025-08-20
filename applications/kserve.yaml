@@ -1,0 +1,10 @@
+iam:
+  service_accounts:
+    - account_id: kserve
+      display_name: KServe SA
+      ns: kserve
+      kubernetes_service_account: kserve
+  storage_buckets:
+    - name: finure-models
+      service_account_id: kserve
+      role: roles/storage.objectAdmin
