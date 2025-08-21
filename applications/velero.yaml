@@ -1,0 +1,22 @@
+iam:
+  service_accounts:
+    - account_id: velero
+      display_name: Velero SA
+      ns: velero
+      kubernetes_service_account: velero
+  storage_buckets:
+    - name: finure-velero
+      service_account_id: velero
+      role: roles/storage.objectAdmin
+
+
+buckets:
+  - name: finure-velero
+    location: "US"
+    versioning_enabled: true
+    uniform_bucket_level_access: true
+    lifecycle_rules:
+      - condition:
+          age: 30
+        action: 
+          type: Delete
