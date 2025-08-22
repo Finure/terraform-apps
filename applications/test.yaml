@@ -1,0 +1,6 @@
+iam:
+  service_accounts:
+    - account_id: testing1
+      display_name: test SA
+      ns: testing
+      kubernetes_service_account: testing
