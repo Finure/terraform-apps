@@ -27,21 +27,21 @@ resource "github_branch_default" "default" {
 }
 
 // Use this after repo is public
-# resource "github_branch_protection" "branch_protections" {
-#   for_each = {
-#     for protection in local.repo_branch_protections :
-#     "${protection.repository_name}:${protection.pattern}" => protection
-#   }
-#   repository_id  = github_repository.repos[each.value.repository_name].node_id
-#   pattern        = each.value.pattern
-#   enforce_admins = each.value.enforce_admins
+resource "github_branch_protection" "branch_protections" {
+  for_each = {
+    for protection in local.repo_branch_protections :
+    "${protection.repository_name}:${protection.pattern}" => protection
+  }
+  repository_id  = github_repository.repos[each.value.repository_name].node_id
+  pattern        = each.value.pattern
+  enforce_admins = each.value.enforce_admins
 
-#   dynamic "required_status_checks" {
-#     for_each = each.value.strict_checks == true || length(each.value.required_checks) > 0 ? [1] : []
+  dynamic "required_status_checks" {
+    for_each = each.value.strict_checks == true || length(each.value.required_checks) > 0 ? [1] : []
 
-#     content {
-#       contexts = each.value.required_checks
-#       strict   = each.value.strict_checks
-#     }
-#   }
-# }
+    content {
+      contexts = each.value.required_checks
+      strict   = each.value.strict_checks
+    }
+  }
+}
