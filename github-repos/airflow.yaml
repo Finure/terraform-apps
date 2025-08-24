@@ -10,3 +10,4 @@ branch_protection:
     dismiss_stale_reviews: true
     enforce_admins: false
     require_code_owner_reviews: true
+    allows_deletions: true
