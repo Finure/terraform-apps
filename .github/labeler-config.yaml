@@ -1,24 +1,12 @@
 ci:
   - changed-files:
       - any-glob-to-any-file: ".github/**/*"
-apis:
+apps:
   - changed-files:
-      - any-glob-to-any-file: "apis/**/*"
-flux:
+      - any-glob-to-any-file: "applications/**/*"
+github:
   - changed-files:
-      - any-glob-to-any-file: "flux/**/*"
-gke:
+      - any-glob-to-any-file: "github-repos/**/*"
+terraform:
   - changed-files:
-      - any-glob-to-any-file: "gke/**/*"
-iam:
-  - changed-files:
-      - any-glob-to-any-file: "iam/**/*"
-iap:
-  - changed-files:
-      - any-glob-to-any-file: "iap/**/*"
-kms:
-  - changed-files:
-      - any-glob-to-any-file: "kms/**/*"
-network:
-  - changed-files:
-      - any-glob-to-any-file: "network/**/*"
+      - any-glob-to-any-file: "modules/**/*"
