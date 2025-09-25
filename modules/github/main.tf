@@ -2,7 +2,7 @@ resource "github_repository" "repos" {
   for_each               = local.repos
   name                   = each.value.name
   description            = trimspace(join(" ", split("\n", each.value.description)))
-  visibility             = try(each.value.visibility, "private")
+  visibility             = try(each.value.visibility, "public")
   homepage_url           = try(each.value.homepage_url, null)
   has_issues             = try(each.value.has_issues, false)
   has_projects           = try(each.value.has_projects, false)
@@ -26,33 +26,32 @@ resource "github_branch_default" "default" {
   branch     = each.value.default_branch
 }
 
-// Apply this after repo is public
-# resource "github_branch_protection" "branch_protections" {
-#   for_each = {
-#     for protection in local.repo_branch_protections :
-#     "${protection.repository_name}:${protection.pattern}" => protection
-#   }
-#   repository_id    = github_repository.repos[each.value.repository_name].node_id
-#   pattern          = each.value.pattern
-#   enforce_admins   = each.value.enforce_admins
-#   allows_deletions = each.value.allows_deletions
+resource "github_branch_protection" "branch_protections" {
+  for_each = {
+    for protection in local.repo_branch_protections :
+    "${protection.repository_name}:${protection.pattern}" => protection
+  }
+  repository_id    = github_repository.repos[each.value.repository_name].node_id
+  pattern          = each.value.pattern
+  enforce_admins   = each.value.enforce_admins
+  allows_deletions = each.value.allows_deletions
 
-#   dynamic "required_status_checks" {
-#     for_each = each.value.strict_checks == true || length(each.value.required_checks) > 0 ? [1] : []
+  dynamic "required_status_checks" {
+    for_each = each.value.strict_checks == true || length(each.value.required_checks) > 0 ? [1] : []
 
-#     content {
-#       contexts = each.value.required_checks
-#       strict   = each.value.strict_checks
-#     }
-#   }
+    content {
+      contexts = each.value.required_checks
+      strict   = each.value.strict_checks
+    }
+  }
 
-#   dynamic "required_pull_request_reviews" {
-#     for_each = each.value.required_reviews > 0 ? [1] : []
+  dynamic "required_pull_request_reviews" {
+    for_each = each.value.required_reviews > 0 ? [1] : []
 
-#     content {
-#       required_approving_review_count = each.value.required_reviews
-#       dismiss_stale_reviews           = each.value.dismiss_stale_reviews
-#       require_code_owner_reviews      = each.value.require_code_owner_reviews
-#     }
-#   }
-# }
+    content {
+      required_approving_review_count = each.value.required_reviews
+      dismiss_stale_reviews           = each.value.dismiss_stale_reviews
+      require_code_owner_reviews      = each.value.require_code_owner_reviews
+    }
+  }
+}
