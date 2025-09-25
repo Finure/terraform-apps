@@ -2,7 +2,7 @@ resource "github_repository" "repos" {
   for_each               = local.repos
   name                   = each.value.name
   description            = trimspace(join(" ", split("\n", each.value.description)))
-  visibility             = try(each.value.visibility, "private")
+  visibility             = try(each.value.visibility, "public")
   homepage_url           = try(each.value.homepage_url, null)
   has_issues             = try(each.value.has_issues, false)
   has_projects           = try(each.value.has_projects, false)
