@@ -1,0 +1,24 @@
+version: 3
+automerge: false
+delete_source_branch_on_merge: true
+parallel_plan: true
+parallel_apply: true
+projects:
+  - dir: modules/iam
+    terraform_version: v1.12.2
+    autoplan:
+      when_modified: ["*.tf", "../../applications/*.yaml"]
+      enabled: true
+    workflow: default
+  - dir: modules/github
+    terraform_version: v1.12.2
+    autoplan:
+      when_modified: ["*.tf", "../../github-repos/*.yaml"]
+      enabled: true
+    workflow: default
+  - dir: modules/gcs
+    terraform_version: v1.12.2
+    autoplan:
+      when_modified: ["*.tf", "../../applications/*.yaml"]
+      enabled: true
+    workflow: default

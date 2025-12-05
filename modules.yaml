@@ -1,0 +1,4 @@
+modules:
+  - path: modules/gcs
+  - path: modules/github
+  - path: modules/iam
