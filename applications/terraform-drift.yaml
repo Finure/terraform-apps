@@ -1,4 +1,4 @@
-terraform-drift:
+iam:
   service_accounts:
     - account_id: terraform-drift
       display_name: terraform-drift SA
