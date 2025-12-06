@@ -1,7 +1,7 @@
 iam:
   service_accounts:
     - account_id: terraform-drift
-      display_name: terraform-drift SA
+      display_name: terraform-drift-sa
       ns: tools
       kubernetes_service_account: terraform-drift
       roles:
