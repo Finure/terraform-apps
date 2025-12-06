@@ -27,5 +27,20 @@ locals {
       )
     ]
   ])
-
+  
+  project_accounts = flatten([
+    for app_name, app in local.apps_config : [
+      for project in try(app.service_accounts, []) : [
+        for role in try(project.roles, []) : merge(project, {
+          app  = app_name
+          role = role
+          service_account_id = (
+            length(regexall(".*@.*", try(project.account_id, ""))) > 0
+            ? try(project.account_id, "")
+            : "${try(project.account_id, "")}@${var.project_id}.iam.gserviceaccount.com"
+          )
+        })
+      ]
+    ]
+  ])
 }

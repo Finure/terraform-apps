@@ -8,6 +8,6 @@ branch_protection:
   - pattern: main
     required_reviews: 1
     dismiss_stale_reviews: true
-    enforce_admins: false
+    enforce_admins: true
     require_code_owner_reviews: true
     allows_deletions: true

@@ -36,3 +36,15 @@ resource "google_storage_bucket_iam_member" "storage-bucket-iam-member" {
   member     = try(each.value.member, "serviceAccount:${each.value.service_account_id}")
   depends_on = [google_service_account.service-account]
 }
+
+resource "google_project_iam_member" "project" {
+  for_each = {
+    for project_account in local.project_accounts :
+    "${project_account.app}:${project_account.account_id}:${project_account.role}" => project_account
+  }
+
+  project    = var.project_id
+  role       = each.value.role
+  member     = "serviceAccount:${each.value.service_account_id}"
+  depends_on = [google_service_account.service-account]
+}
