@@ -1,0 +1,14 @@
+terraform-drift:
+  service_accounts:
+    - account_id: terraform-drift
+      display_name: terraform-drift SA
+      ns: tools
+      kubernetes_service_account: terraform-drift
+      roles:
+       - "roles/resourcemanager.projectIamAdmin"
+       - "roles/iam.serviceAccountAdmin"
+       - "roles/storage.admin"
+  storage_buckets:
+    - name: finure-tfstate
+      service_account_id: terraform-drift
+      role: roles/storage.objectAdmin
